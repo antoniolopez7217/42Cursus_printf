@@ -33,7 +33,9 @@ int	ft_printf(char const *f, ...)
 int	ft_check_str(t_list *lst)
 {
 	int	i;
-
+	int	count;
+	
+	count = 1; 
 	i = 0;
 	while(lst[0][i].content)
 	{
@@ -47,13 +49,16 @@ int	ft_check_str(t_list *lst)
 		{
 			ft_putchar_fd(lst[0][i].content, 1);
 			i++;
-			continue;
 		}
-		
-
-
+		else
+		{
+			i++;
+			if (!ft_check_format(lst, lst[0][i].content, count))
+				return (0);
+			count++;
+		}
+		i++;
 	}
-
 }
 
 
