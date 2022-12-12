@@ -18,7 +18,7 @@
 # include <stdarg.h>
 # include <stdlib.h>
 
-int	ft_printf(char const *, ...);
+int	ft_printf(char const *f, ...);
 
 
 #endif
