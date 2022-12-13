@@ -14,40 +14,39 @@
 
 int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
 {
-	va_list	args;
-	int		i;
-	int		len;
+	va_list		arg;
+	size_t		i;
+	size_t		len;
 
-	va_start(args, str);
+	va_start(arg, str);
+	len = 0;
 	i = 0;
 	while (str[i])
 	{
-		if(i == 0 || lst[0][i+1].content == '\0') //Comprueba que el primero y el ultimo char sea "
-			if(lst[0][i].content != '"')
-				return (0);
+		if (str[i] == '%')
+		{
+			if (str[i + 1] != '%')
+				ft_check_format(va_arg(arg, void*), str[i + 1], &len);
 			else
-				i++;
-				continue;
-		if (lst[0][i].content != '%') //Imprime todo lo que no sea % o las " inciales o finales
-		{
-			ft_putchar_fd(lst[0][i].content, 1);
-			i++;
+				ft_putchar(str[i + 1], &len);
+		i++;
 		}
-		else //Comprueba el formato tras un %
-		{
-			i++;
-			if (!ft_check_format(lst, lst[0][i].content, count))
-				return (0);
-			count++;
-		}
+		else if (i != 0 && str[i + 1] != '\0')
+			ft_putchar(str[i], &len);
 		i++;
 	}
 	return (len);
 }
 
-int	ft_check_format(void *arg, char format, int count)
+int	ft_check_format(void *arg, char format, size_t	*len)
 {
 
+
+
+}
+
+int	ft_putchar(char c, size_t *len)
+{
 
 
 }
