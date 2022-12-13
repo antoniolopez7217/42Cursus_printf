@@ -12,45 +12,28 @@
 
 #include "libftprintf.h"
 
-int	ft_printf(char const *str, ...)
+int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
 {
-	t_list	args_lst;
 	va_list	args;
 	int		i;
+	int		len;
 
 	va_start(args, str);
 	i = 0;
-	while (i < str)
+	while (str[i])
 	{
-		ft_lstadd_back(args_lst, ft_lstnew(va_arg(args, char const))); //Crea un nodo y se le añade al final de la lista para ir incluyendo los args
-		i++;
-	}
-	if (ft_check_str(args_lst) == 0) // Recorre la str y devuelve 0 si hay error
-		return (0);
-	return (1);
-}
-
-int	ft_check_str(t_list *lst)
-{
-	int	i;
-	int	count;
-	
-	count = 1; 
-	i = 0;
-	while(lst[0][i].content)
-	{
-		if(i == 0 || lst[0][i+1].content == '\0') //Comprueba que el primero y el ultimo char sea '"'
+		if(i == 0 || lst[0][i+1].content == '\0') //Comprueba que el primero y el ultimo char sea "
 			if(lst[0][i].content != '"')
 				return (0);
 			else
 				i++;
 				continue;
-		if (lst[0][i].content != '%') //Comprueba el formato tras %
+		if (lst[0][i].content != '%') //Imprime todo lo que no sea % o las " inciales o finales
 		{
 			ft_putchar_fd(lst[0][i].content, 1);
 			i++;
 		}
-		else
+		else //Comprueba el formato tras un %
 		{
 			i++;
 			if (!ft_check_format(lst, lst[0][i].content, count))
@@ -59,10 +42,10 @@ int	ft_check_str(t_list *lst)
 		}
 		i++;
 	}
+	return (len);
 }
 
-
-int	ft_check_format(t_list *lst, char format, int count)
+int	ft_check_format(void *arg, char format, int count)
 {
 
 
