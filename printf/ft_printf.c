@@ -12,11 +12,25 @@
 
 #include "libftprintf.h"
 
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+void	ft_check_format(int arg, char format, int	*len)
+{
+	if (format == 'c')
+		*len = *len + ft_putchar((char)arg);
+	if (format == 's')
+		*len = *len + ft_putstr((char *)arg);
+}
+
 int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
 {
 	va_list		arg;
-	size_t		i;
-	size_t		len;
+	int			i;
+	int			len;
 
 	va_start(arg, str);
 	len = 0;
@@ -26,27 +40,23 @@ int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
 		if (str[i] == '%')
 		{
 			if (str[i + 1] != '%')
-				ft_check_format(va_arg(arg, void*), str[i + 1], &len);
+				ft_check_format(va_arg(arg, int), str[i + 1], &len);
 			else
-				ft_putchar(str[i + 1], &len);
+				len = len + ft_putchar(str[i + 1]);
 		i++;
 		}
-		else if (i != 0 && str[i + 1] != '\0')
-			ft_putchar(str[i], &len);
+		else
+			len = len + ft_putchar(str[i]);
 		i++;
 	}
+	printf("\nLen: %d\n", len); //BORRAR************************
 	return (len);
 }
 
-int	ft_check_format(void *arg, char format, size_t	*len)
+
+
+int	main(void)
 {
-
-
-
-}
-
-int	ft_putchar(char c, size_t *len)
-{
-
-
+	ft_printf("Hello %s", "World");
+	return (0);
 }
