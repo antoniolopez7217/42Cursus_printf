@@ -13,6 +13,7 @@
 #include "ft_printf.h"
 #include "ft_itoa.c"
 #include "ft_putf.c"
+#include "ft_putnbr_base.c"
 
 void	ft_check_format(va_list arg, char format, int	*len)
 {
@@ -24,8 +25,12 @@ void	ft_check_format(va_list arg, char format, int	*len)
 		*len = *len + ft_putstr(ft_itoa(va_arg(arg, int), 0));
 	if (format == 'u')
 		*len = *len + ft_putstr(ft_itoa(va_arg(arg, int), 1));
+	if (format == 'x')
+		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789abcdef");
 	if (format == '%')
 		*len = *len + ft_putchar('%');
+	
+
 
 }
 
