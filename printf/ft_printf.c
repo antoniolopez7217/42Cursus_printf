@@ -10,20 +10,23 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libftprintf.h"
-// #include "ft_itoa.c"
-// #include "ft_putf.c"
+#include "ft_printf.h"
+#include "ft_itoa.c"
+#include "ft_putf.c"
 
-void	ft_check_format(void *arg, char format, int	*len)
+void	ft_check_format(va_list arg, char format, int	*len)
 {
 	if (format == 'c')
-		*len = *len + ft_putchar_p(arg);
+		*len = *len + ft_putchar(va_arg(arg, int));
 	if (format == 's')
-		*len = *len + ft_putstr((char *)arg);
+		*len = *len + ft_putstr(va_arg(arg, char *));
 	if (format == 'd' || format == 'i')
-		*len = *len + ft_putstr(ft_itoa((intptr_t)arg, 0));
+		*len = *len + ft_putstr(ft_itoa(va_arg(arg, int), 0));
 	if (format == 'u')
-		*len = *len + ft_putstr(ft_itoa((intptr_t)arg, 1));
+		*len = *len + ft_putstr(ft_itoa(va_arg(arg, int), 1));
+	if (format == '%')
+		*len = *len + ft_putchar('%');
+
 }
 
 int	ft_printf(char const *str, ...)
@@ -39,11 +42,8 @@ int	ft_printf(char const *str, ...)
 	{
 		if (str[i] == '%')
 		{
-			if (str[i + 1] != '%')
-				ft_check_format(va_arg(arg, void *), str[i + 1], &len);
-			else
-				len = len + ft_putchar(str[i + 1]);
-		i++;
+			i++;
+			ft_check_format(arg, str[i], &len);
 		}
 		else
 			len = len + ft_putchar(str[i]);
@@ -52,8 +52,8 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-// int	main(void)
-// {
-// 	ft_printf("%u\n%u\n%u\n%d\n%i\n", -69, -58, 45, 58, 57);
-// 	return (0);
-// }
+int	main(void)
+{
+	ft_printf("%c\n%%\n%u\n%d\n%i\n", 'f', -58, 45, 58, 57);
+	return (0);
+}

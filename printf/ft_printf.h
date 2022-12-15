@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putf.c                                          :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: antlopez <antlopez@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/15 19:57:18 by antlopez          #+#    #+#             */
-/*   Updated: 2022/12/15 19:57:19 by antlopez         ###   ########.fr       */
+/*   Created: 2022/12/11 17:59:00 by antlopez          #+#    #+#             */
+/*   Updated: 2022/12/11 17:59:01 by antlopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
+# include <unistd.h>
+# include <stdio.h>
+# include <stdarg.h>
+# include <stdlib.h>
+# include <stdint.h>
 
-int	ft_putstr(char *s)
-{
-	int	len;
+int		ft_printf(char const *f, ...);
+char	*ft_itoa(int n, int sign);
+int		ft_putchar(char c);
+int		ft_putstr(char *s);
+void	ft_check_format(va_list arg, char format, int	*len);
 
-	len = 0;
-	while (s[len])
-	{
-		write(1, &s[len], 1);
-		len++;
-	}
-	return (len);
-}
+#endif
