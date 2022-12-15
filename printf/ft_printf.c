@@ -27,11 +27,10 @@ void	ft_check_format(va_list arg, char format, int	*len)
 		*len = *len + ft_putstr(ft_itoa(va_arg(arg, int), 1));
 	if (format == 'x')
 		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789abcdef");
+	if (format == 'X')
+		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789ABCDEF");
 	if (format == '%')
 		*len = *len + ft_putchar('%');
-	
-
-
 }
 
 int	ft_printf(char const *str, ...)
@@ -59,6 +58,6 @@ int	ft_printf(char const *str, ...)
 
 int	main(void)
 {
-	ft_printf("%c\n%%\n%u\n%d\n%i\n", 'f', -58, 45, 58, 57);
+	ft_printf("%c\n%x\n%u\n%X\n%i\n", 'f', -58, 45, 58, 57);
 	return (0);
 }

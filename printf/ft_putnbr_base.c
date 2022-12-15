@@ -16,8 +16,8 @@ static void	ft_base_minnegative(unsigned int nbr, char *base, int *len)
 {
 	if (nbr >= 16)
 	{	
-		ft_base_minnegative(nbr / 16, base, &len);
-		ft_base_minnegative(nbr % 16, base, &len);
+		ft_base_minnegative(nbr / 16, base, len);
+		ft_base_minnegative(nbr % 16, base, len);
 	}
 	else
 		*len = *len + ft_putchar(base[nbr]);

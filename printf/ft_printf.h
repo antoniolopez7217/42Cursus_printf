@@ -24,6 +24,6 @@ char	*ft_itoa(int n, int sign);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 void	ft_check_format(va_list arg, char format, int	*len);
-void	ft_putnbr_base(int nbr, char *base);
+int		ft_putnbr_base(int nbr, char *base);
 
 #endif
