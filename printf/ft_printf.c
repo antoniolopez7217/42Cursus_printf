@@ -11,8 +11,15 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include "ft_itoa.c"
 
 int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putchar_p(char *c)
 {
 	write(1, &c, 1);
 	return (1);
@@ -34,12 +41,14 @@ int	ft_putstr(char *s)
 void	ft_check_format(void *arg, char format, int	*len)
 {
 	if (format == 'c')
-		*len = *len + ft_putchar(arg); //Intentar hacer un ftputchar para char y otro para char *?
+		*len = *len + ft_putchar_p(arg);
 	if (format == 's')
 		*len = *len + ft_putstr((char *)arg);
+	if (format == 'd')
+		*len = *len + ft_putstr(ft_itoa((uintptr_t)arg));
 }
 
-int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
+int	ft_printf(char const *str, ...)
 {
 	va_list		arg;
 	int			i;
@@ -70,6 +79,6 @@ int	ft_printf(char const *str, ...) //Debe devolver el numero de chars impresos
 
 int	main(void)
 {
-	ft_printf("Hello %s", "World");
+	ft_printf("Hello %d", -255);
 	return (0);
 }

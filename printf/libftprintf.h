@@ -17,8 +17,9 @@
 # include <stdio.h>
 # include <stdarg.h>
 # include <stdlib.h>
+# include <stdint.h>
 
-int	ft_printf(char const *f, ...);
-
+int		ft_printf(char const *f, ...);
+char	*ft_itoa(int n)
 
 #endif
