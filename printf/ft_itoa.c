@@ -12,6 +12,13 @@
 
 #include "libftprintf.h"
 
+static int	ft_positive(int n)
+{
+	if (n < 0)
+		n = -n;
+	return (n);
+}
+
 static int	ft_intlen(long int n)
 {
 	int	len;

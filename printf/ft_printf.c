@@ -11,32 +11,8 @@
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include "ft_itoa.c"
-
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putchar_p(char *c)
-{
-	write(1, &c, 1);
-	return (1);
-}
-
-int	ft_putstr(char *s)
-{
-	int	len;
-	
-	len = 0;
-	while (s[len])
-	{
-		write(1, &s[len], 1);
-		len++;
-	}
-	return (len);
-}
+// #include "ft_itoa.c"
+// #include "ft_putf.c"
 
 void	ft_check_format(void *arg, char format, int	*len)
 {
@@ -44,8 +20,10 @@ void	ft_check_format(void *arg, char format, int	*len)
 		*len = *len + ft_putchar_p(arg);
 	if (format == 's')
 		*len = *len + ft_putstr((char *)arg);
-	if (format == 'd')
-		*len = *len + ft_putstr(ft_itoa((uintptr_t)arg));
+	if (format == 'd' || format == 'i')
+		*len = *len + ft_putstr(ft_itoa((intptr_t)arg));
+	if (format == 'u')
+		*len = *len + ft_putstr(ft_itoa(ft_positive((uintptr_t)arg)));
 }
 
 int	ft_printf(char const *str, ...)
@@ -71,14 +49,11 @@ int	ft_printf(char const *str, ...)
 			len = len + ft_putchar(str[i]);
 		i++;
 	}
-	printf("\nLen: %d\n", len); //BORRAR************************
 	return (len);
 }
 
-
-
-int	main(void)
-{
-	ft_printf("Hello %d", -255);
-	return (0);
-}
+// int	main(void)
+// {
+// 	ft_printf("Hello %c%s %d %u", 'W', "orld", 90000000, 50);
+// 	return (0);
+// }
