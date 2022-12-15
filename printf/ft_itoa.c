@@ -12,41 +12,39 @@
 
 #include "libftprintf.h"
 
-static int	ft_positive(int n)
+static int	ft_intlen(long int *n, int sign)
 {
-	if (n < 0)
-		n = -n;
-	return (n);
-}
+	int			len;
+	long int	num;
 
-static int	ft_intlen(long int n)
-{
-	int	len;
-
-	if (n == 0)
+	num = *n;
+	if (num == 0)
 		return (1);
 	len = 1;
-	if (n < 0)
+	if (num < 0)
 	{
-		n = -n;
-		len++;
+		num = -num;
+		if (sign == 0)
+			len++;
+		else
+			*n = -(*n);
 	}
-	while (n >= 10)
+	while (num >= 10)
 	{
-		n = n / 10;
+		num = num / 10;
 		len++;
 	}
 	return (len);
 }
 
-char	*ft_itoa(int n)
+char	*ft_itoa(int n, int sign)
 {
 	char		*str;
 	int			len;
 	long int	ln;
 
 	ln = n;
-	len = ft_intlen(ln);
+	len = ft_intlen(&ln, sign);
 	str = (char *)malloc(len + 1);
 	if (str == NULL)
 		return (0);

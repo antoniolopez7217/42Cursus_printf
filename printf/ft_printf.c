@@ -21,9 +21,9 @@ void	ft_check_format(void *arg, char format, int	*len)
 	if (format == 's')
 		*len = *len + ft_putstr((char *)arg);
 	if (format == 'd' || format == 'i')
-		*len = *len + ft_putstr(ft_itoa((intptr_t)arg));
+		*len = *len + ft_putstr(ft_itoa((intptr_t)arg, 0));
 	if (format == 'u')
-		*len = *len + ft_putstr(ft_itoa(ft_positive((uintptr_t)arg)));
+		*len = *len + ft_putstr(ft_itoa((intptr_t)arg, 1));
 }
 
 int	ft_printf(char const *str, ...)
@@ -54,6 +54,6 @@ int	ft_printf(char const *str, ...)
 
 // int	main(void)
 // {
-// 	ft_printf("Hello %c%s %d %u", 'W', "orld", 90000000, 50);
+// 	ft_printf("%u\n%u\n%u\n%d\n%i\n", -69, -58, 45, 58, 57);
 // 	return (0);
 // }
