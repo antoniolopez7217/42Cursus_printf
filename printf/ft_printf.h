@@ -20,7 +20,7 @@
 # include <stdint.h>
 
 int		ft_printf(char const *f, ...);
-char	*ft_itoa(int n, int sign);
+int		ft_itoa(int n, int sign);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 void	ft_check_format(va_list arg, char format, int	*len);

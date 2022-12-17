@@ -37,15 +37,15 @@ static int	ft_intlen(long int *n, int sign)
 	return (len);
 }
 
-char	*ft_itoa(int n, int sign)
+int	ft_itoa(int n, int sign)
 {
 	char		*str;
 	int			len;
 	long int	ln;
 
 	ln = n;
-	len = ft_intlen(&ln, sign);
-	str = (char *)malloc(len + 1);
+	len = ft_intlen(&ln, sign) - 1;
+	str = (char *)malloc(len + 2);
 	if (str == NULL)
 		return (0);
 	if (ln < 0)
@@ -53,8 +53,7 @@ char	*ft_itoa(int n, int sign)
 		str[0] = '-';
 		ln = -ln;
 	}
-	str[len] = '\0';
-	len--;
+	str[len + 1] = '\0';
 	while (ln >= 10)
 	{
 		str[len] = (ln % 10) + '0';
@@ -62,5 +61,7 @@ char	*ft_itoa(int n, int sign)
 		len--;
 	}
 	str[len] = ln + '0';
-	return (str);
+	len = ft_putstr(str);
+	free(str);
+	return (len);
 }

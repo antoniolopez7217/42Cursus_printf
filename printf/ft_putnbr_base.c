@@ -21,7 +21,6 @@ static void	ft_base_minnegative(unsigned int nbr, char *base, int *len)
 	}
 	else
 		*len = *len + ft_putchar(base[nbr]);
-		
 }
 
 int	ft_putnbr_base(int nbr, char *base)
