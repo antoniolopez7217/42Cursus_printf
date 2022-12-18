@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-// #include "ft_itoa.c"
-// #include "ft_putf.c"
-// #include "ft_putnbr_base.c"
+#include "ft_itoa.c"
+#include "ft_putf.c"
+#include "ft_putnbr_base.c"
 
 void	ft_check_format(va_list arg, char format, int	*len)
 {
@@ -24,7 +24,7 @@ void	ft_check_format(va_list arg, char format, int	*len)
 	if (format == 'd' || format == 'i')
 		*len = *len + ft_itoa(va_arg(arg, int), 0);
 	if (format == 'u')
-		*len = *len + ft_itoa(va_arg(arg, int), 1);
+		*len = *len + ft_itoa(va_arg(arg, long int), 1);
 	if (format == 'x')
 		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789abcdef");
 	if (format == 'X')
@@ -56,8 +56,10 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-// int	main(void)
-// {
-// 	ft_printf("%d\n%i\n%u\n%d\n%i\n", 69, -58, -45, 58, 57);
-// 	return (0);
-// }
+int	main(void)
+{
+	ft_printf("%u\n%u\n%u\n%u\n%u\n\n", -1, -2, -3, 58, 57);
+	printf("%u\n%u\n%u\n%u\n%u\n", -1, -2, -3, 58, 57);
+
+	return (0);
+}
