@@ -12,29 +12,11 @@
 
 #include "ft_printf.h"
 
-static void	ft_base_minnegative(unsigned int nbr, char *base, int *len)
-{
-	if (nbr >= 16)
-	{	
-		ft_base_minnegative(nbr / 16, base, len);
-		ft_base_minnegative(nbr % 16, base, len);
-	}
-	else
-		*len = *len + ft_putchar(base[nbr]);
-}
-
-int	ft_putnbr_base(int nbr, char *base)
+int	ft_putnbr_base(long int nbr, char *base)
 {
 	int	len;
 
 	len = 0;
-	if (nbr == -2147483648)
-	{
-		len = len + ft_putchar('-');
-		ft_base_minnegative(2147483648, base, &len);
-	}
-	else
-	{
 		if (nbr < 0)
 		{
 			len = len + ft_putchar('-');
@@ -47,6 +29,5 @@ int	ft_putnbr_base(int nbr, char *base)
 		}
 		if (nbr < 16)
 			len = len + ft_putchar(base[nbr]);
-	}
 	return (len);
 }

@@ -22,13 +22,13 @@ void	ft_check_format(va_list arg, char format, int	*len)
 	if (format == 's')
 		*len = *len + ft_putstr(va_arg(arg, char *));
 	if (format == 'd' || format == 'i')
-		*len = *len + ft_itoa(va_arg(arg, int), 0);
+		*len = *len + ft_itoa(va_arg(arg, long int), 0);
 	if (format == 'u')
 		*len = *len + ft_itoa(va_arg(arg, long int), 1);
 	if (format == 'x')
-		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789abcdef");
+		*len = *len + ft_putnbr_base(va_arg(arg, long int), "0123456789abcdef");
 	if (format == 'X')
-		*len = *len + ft_putnbr_base(va_arg(arg, int), "0123456789ABCDEF");
+		*len = *len + ft_putnbr_base(va_arg(arg, long int), "0123456789ABCDEF");
 	if (format == '%')
 		*len = *len + ft_putchar('%');
 }
@@ -58,8 +58,13 @@ int	ft_printf(char const *str, ...)
 
 int	main(void)
 {
-	ft_printf("%u\n%u\n%u\n%u\n%u\n\n", -1, -2, -3, 58, 57);
-	printf("%u\n%u\n%u\n%u\n%u\n", -1, -2, -3, 58, 57);
+	int len1;
+	int len2;
+
+	len1 = ft_printf("%x", -100);
+	printf("\nlen1: %d\n", len1);
+	len2 = printf("%x", -100);
+	printf("\nlen2: %d\n", len2);
 
 	return (0);
 }

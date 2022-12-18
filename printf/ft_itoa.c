@@ -40,7 +40,7 @@ static int	ft_intlen(long int *ln, long int num, int sign)
 	return (len);
 }
 
-int	ft_itoa(int n, int sign)
+int	ft_itoa(long int n, int sign)
 {
 	char		*str;
 	int			len;
