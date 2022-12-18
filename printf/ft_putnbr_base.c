@@ -12,22 +12,22 @@
 
 #include "ft_printf.h"
 
-int	ft_putnbr_base(long int nbr, char *base)
+int	ft_putnbr_base(long int nbr, char *base, int *len)
 {
-	int	len;
+	int	size;
 
-	len = 0;
-		if (nbr < 0)
-		{
-			len = len + ft_putchar('-');
-			nbr = nbr * (-1);
-		}
-		if (nbr >= 16)
-		{	
-			ft_putnbr_base(nbr / 16, base);
-			ft_putnbr_base(nbr % 16, base);
-		}
-		if (nbr < 16)
-			len = len + ft_putchar(base[nbr]);
-	return (len);
+	if (nbr < 0)
+	{
+		*len = *len + ft_putchar('-');
+		nbr = nbr * (-1);
+	}
+	if (nbr >= 16)
+	{	
+		ft_putnbr_base(nbr / 16, base, len);
+		ft_putnbr_base(nbr % 16, base, len);
+	}
+	if (nbr < 16)
+		*len = *len + ft_putchar(base[nbr]);
+	size = *len;
+	return (size);
 }

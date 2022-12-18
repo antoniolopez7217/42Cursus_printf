@@ -15,20 +15,20 @@
 #include "ft_putf.c"
 #include "ft_putnbr_base.c"
 
-void	ft_check_format(va_list arg, char format, int	*len)
+void	ft_check_format(va_list arg, char format, int *len)
 {
 	if (format == 'c')
 		*len = *len + ft_putchar(va_arg(arg, int));
 	if (format == 's')
 		*len = *len + ft_putstr(va_arg(arg, char *));
 	if (format == 'd' || format == 'i')
-		*len = *len + ft_itoa(va_arg(arg, long int), 0);
+		*len = *len + ft_itoa(va_arg(arg, int), 0);
 	if (format == 'u')
 		*len = *len + ft_itoa(va_arg(arg, long int), 1);
 	if (format == 'x')
-		*len = *len + ft_putnbr_base(va_arg(arg, long int), "0123456789abcdef");
+		*len = ft_putnbr_base(va_arg(arg, long int), "0123456789abcdef", len);
 	if (format == 'X')
-		*len = *len + ft_putnbr_base(va_arg(arg, long int), "0123456789ABCDEF");
+		*len = ft_putnbr_base(va_arg(arg, long int), "0123456789ABCDEF", len);
 	if (format == '%')
 		*len = *len + ft_putchar('%');
 }
@@ -61,9 +61,9 @@ int	main(void)
 	int len1;
 	int len2;
 
-	len1 = ft_printf("%x", -100);
+	len1 = ft_printf("%u", LONG_MAX);
 	printf("\nlen1: %d\n", len1);
-	len2 = printf("%x", -100);
+	len2 = printf("%lu", LONG_MAX);
 	printf("\nlen2: %d\n", len2);
 
 	return (0);
