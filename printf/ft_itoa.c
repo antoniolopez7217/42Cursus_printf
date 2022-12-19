@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-static int	ft_intlen(long int *ln, long int num, int sign)
+static int	ft_intlen(long int num)
 {
 	int			len;
 
@@ -21,16 +21,8 @@ static int	ft_intlen(long int *ln, long int num, int sign)
 	len = 1;
 	if (num < 0)
 	{
-		if (sign == 0)
-		{	
-			num = -num;
-			len++;
-		}
-		else
-		{
-			*ln = 4294967295 + (*ln + 1);
-			num = *ln;
-		}
+		num = -num;
+		len++;
 	}
 	while (num >= 10)
 	{
@@ -40,30 +32,28 @@ static int	ft_intlen(long int *ln, long int num, int sign)
 	return (len);
 }
 
-int	ft_itoa(long int n, int sign)
+int	ft_itoa(long int n)
 {
 	char		*str;
 	int			len;
-	long int	ln;
 
-	ln = n;
-	len = ft_intlen(&ln, ln, sign) - 1;
+	len = ft_intlen(n) - 1;
 	str = (char *)malloc(len + 2);
 	if (str == NULL)
 		return (0);
-	if (ln < 0)
+	if (n < 0)
 	{
 		str[0] = '-';
-		ln = -ln;
+		n = -n;
 	}
 	str[len + 1] = '\0';
-	while (ln >= 10)
+	while (n >= 10)
 	{
-		str[len] = (ln % 10) + '0';
-		ln = ln / 10;
+		str[len] = (n % 10) + '0';
+		n = n / 10;
 		len--;
 	}
-	str[len] = ln + '0';
+	str[len] = n + '0';
 	len = ft_putstr(str);
 	free(str);
 	return (len);

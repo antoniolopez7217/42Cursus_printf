@@ -11,9 +11,9 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-#include "ft_itoa.c"
-#include "ft_putf.c"
-#include "ft_putnbr_base.c"
+// #include "ft_itoa.c"
+// #include "ft_putf.c"
+// #include "ft_putnbr_base.c"
 
 void	ft_check_format(va_list arg, char format, int *len)
 {
@@ -22,9 +22,9 @@ void	ft_check_format(va_list arg, char format, int *len)
 	if (format == 's')
 		*len = *len + ft_putstr(va_arg(arg, char *));
 	if (format == 'd' || format == 'i')
-		*len = *len + ft_itoa(va_arg(arg, int), 0);
+		*len = *len + ft_itoa(va_arg(arg, int));
 	if (format == 'u')
-		*len = *len + ft_itoa(va_arg(arg, long int), 1);
+		*len = *len + ft_itoa(va_arg(arg, unsigned int));
 	if (format == 'x')
 		*len = ft_putnbr_base(va_arg(arg, long int), "0123456789abcdef", len);
 	if (format == 'X')
@@ -56,15 +56,15 @@ int	ft_printf(char const *str, ...)
 	return (len);
 }
 
-int	main(void)
-{
-	int len1;
-	int len2;
+// int	main(void)
+// {
+// 	int len1;
+// 	int len2;
 
-	len1 = ft_printf("%u", LONG_MAX);
-	printf("\nlen1: %d\n", len1);
-	len2 = printf("%lu", LONG_MAX);
-	printf("\nlen2: %d\n", len2);
+// 	len1 = ft_printf("%u", -1);
+// 	printf("\nlen1: %d\n", len1);
+// 	len2 = printf("%u", -1);
+// 	printf("\nlen2: %d\n", len2);
 
-	return (0);
-}
+// 	return (0);
+// }
