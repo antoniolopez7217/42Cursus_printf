@@ -40,7 +40,7 @@ void	ft_itoa(long int n, int *len)
 	intlen = ft_intlen(n) - 1;
 	str = (char *)malloc(intlen + 2);
 	if (str == NULL)
-		return;
+		return ;
 	if (n < 0)
 	{
 		str[0] = '-';
