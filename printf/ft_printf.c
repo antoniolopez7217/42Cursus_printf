@@ -61,9 +61,9 @@ int	ft_printf(char const *str, ...)
 // 	int len1;
 // 	int len2;
 
-// 	len1 = ft_printf("%x", -100000);
+// 	len1 = ft_printf(" NULL %s NULL ", NULL);
 // 	printf("\nlen1: %d\n", len1);
-// 	len2 = printf("%x", -100000);
+// 	len2 = printf(" NULL %s NULL ", NULL);
 // 	printf("\nlen2: %d\n", len2);
 
 // 	return (0);
