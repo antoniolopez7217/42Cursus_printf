@@ -26,9 +26,9 @@ void	ft_check_format(va_list arg, char format, int *len)
 	if (format == 'u')
 		*len = *len + ft_itoa(va_arg(arg, unsigned int));
 	if (format == 'x')
-		*len = ft_putnbr_base(va_arg(arg, long int), "0123456789abcdef", len);
+		*len = ft_putnbr_base(va_arg(arg, unsigned int), "0123456789abcdef", len);
 	if (format == 'X')
-		*len = ft_putnbr_base(va_arg(arg, long int), "0123456789ABCDEF", len);
+		*len = ft_putnbr_base(va_arg(arg, unsigned int), "0123456789ABCDEF", len);
 	if (format == '%')
 		*len = *len + ft_putchar('%');
 }
@@ -61,9 +61,9 @@ int	ft_printf(char const *str, ...)
 // 	int len1;
 // 	int len2;
 
-// 	len1 = ft_printf("%u", -1);
+// 	len1 = ft_printf("%x", -100000);
 // 	printf("\nlen1: %d\n", len1);
-// 	len2 = printf("%u", -1);
+// 	len2 = printf("%x", -100000);
 // 	printf("\nlen2: %d\n", len2);
 
 // 	return (0);

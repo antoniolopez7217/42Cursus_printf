@@ -16,11 +16,6 @@ int	ft_putnbr_base(long int nbr, char *base, int *len)
 {
 	int	size;
 
-	if (nbr < 0)
-	{
-		*len = *len + ft_putchar('-');
-		nbr = nbr * (-1);
-	}
 	if (nbr >= 16)
 	{	
 		ft_putnbr_base(nbr / 16, base, len);
