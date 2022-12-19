@@ -20,9 +20,8 @@
 # include <stdint.h>
 # include <limits.h>
 
-# define HEXA_L "0123456789abcdef"
-# define HEXA_U "0123456789ABCDEF"
-# define DEC "0123456789ABCDEF"
+# define HEX_L "0123456789abcdef"
+# define HEX_U "0123456789ABCDEF"
 
 int		ft_printf(char const *f, ...);
 void	ft_itoa(long int n, int *len);
