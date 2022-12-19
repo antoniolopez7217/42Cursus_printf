@@ -14,47 +14,47 @@
 
 static int	ft_intlen(long int num)
 {
-	int			len;
+	int			intlen;
 
 	if (num == 0)
 		return (1);
-	len = 1;
+	intlen = 1;
 	if (num < 0)
 	{
 		num = -num;
-		len++;
+		intlen++;
 	}
 	while (num >= 10)
 	{
 		num = num / 10;
-		len++;
+		intlen++;
 	}
-	return (len);
+	return (intlen);
 }
 
-int	ft_itoa(long int n)
+void	ft_itoa(long int n, int *len)
 {
 	char		*str;
-	int			len;
+	int			intlen;
 
-	len = ft_intlen(n) - 1;
-	str = (char *)malloc(len + 2);
+	intlen = ft_intlen(n) - 1;
+	str = (char *)malloc(intlen + 2);
 	if (str == NULL)
-		return (0);
+		return;
 	if (n < 0)
 	{
 		str[0] = '-';
 		n = -n;
 	}
-	str[len + 1] = '\0';
+	str[intlen + 1] = '\0';
 	while (n >= 10)
 	{
-		str[len] = (n % 10) + '0';
+		str[intlen] = (n % 10) + '0';
 		n = n / 10;
-		len--;
+		intlen--;
 	}
-	str[len] = n + '0';
-	len = ft_putstr(str);
+	str[intlen] = n + '0';
+	intlen = ft_putstr(str);
 	free(str);
-	return (len);
+	*len = *len + intlen;
 }
