@@ -12,6 +12,17 @@
 
 #include "ft_printf.h"
 
+void	ft_pconvert(unsigned long int nbr, int *len)
+{
+	if (nbr == 0)
+		*len = *len + ft_putstr("(nil)");
+	else
+	{
+		*len = *len + ft_putchar('0') + ft_putchar('x');
+		ft_putnbr_base(nbr, HEX_L, len);
+	}
+}
+
 void	ft_putnbr_base(unsigned long int nbr, char *base, int *len)
 {
 	if (nbr >= 16)
