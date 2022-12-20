@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_putnbr_base(long int nbr, char *base, int *len)
+void	ft_putnbr_base(unsigned long int nbr, char *base, int *len)
 {
 	if (nbr >= 16)
 	{	

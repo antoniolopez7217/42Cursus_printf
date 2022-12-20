@@ -24,7 +24,7 @@ void	ft_check_format(va_list arg, char format, int *len)
 	if (format == 'p')
 	{
 		*len = *len + ft_putchar('0') + ft_putchar('x');
-		ft_putnbr_base((unsigned long)va_arg(arg, void *), HEX_L, len);
+		ft_putnbr_base((unsigned long int)va_arg(arg, void *), HEX_L, len);
 	}
 	if (format == 'd' || format == 'i')
 		ft_itoa(va_arg(arg, int), len);
@@ -66,9 +66,9 @@ int	ft_printf(char const *str, ...)
 // 	int len1;
 // 	int len2;
 
-// 	len1 = ft_printf(" %p ", &len2);
+// 	len1 = ft_printf(" %p ", -1);
 // 	printf("\nlen1: %d\n", len1);
-// 	len2 = printf(" %p ", &len2);
+// 	len2 = printf(" %p ",-1);
 // 	printf("\nlen2: %d\n", len2);
 
 // 	return (0);

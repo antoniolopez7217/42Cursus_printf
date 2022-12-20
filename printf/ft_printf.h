@@ -28,6 +28,6 @@ void	ft_itoa(long int n, int *len);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
 void	ft_check_format(va_list arg, char format, int *len);
-void	ft_putnbr_base(long int nbr, char *base, int *len);
+void	ft_putnbr_base(unsigned long int nbr, char *base, int *len);
 
 #endif
