@@ -15,6 +15,27 @@
 // #include "ft_putf.c"
 // #include "ft_putnbr_base.c"
 
+int	ft_putchar(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
+
+int	ft_putstr(char *s)
+{
+	int	len;
+
+	if (s == NULL)
+		s = "(null)";
+	len = 0;
+	while (s[len])
+	{
+		write(1, &s[len], 1);
+		len++;
+	}
+	return (len);
+}
+
 void	ft_check_format(va_list arg, char format, int *len)
 {
 	if (format == 'c')
