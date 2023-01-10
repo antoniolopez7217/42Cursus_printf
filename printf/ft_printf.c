@@ -11,9 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-// #include "ft_itoa.c"
-// #include "ft_putf.c"
-// #include "ft_putnbr_base.c"
+// #include "ft_printf_utils.c"
 
 int	ft_putchar(char c)
 {
@@ -83,14 +81,10 @@ int	ft_printf(char const *str, ...)
 // {
 // 	int len1;
 // 	int len2;
-// 	void	*str;
 
-// 	str = 0;
-
-// 	len1 = ft_printf(" %p ", 0);
+// 	len1 = ft_printf(" %p %p ", 0, 0);
 // 	printf("\nlen1: %d\n", len1);
-// 	len2 = printf(" %p ", str);
+// 	len2 = printf(" %p %p ", 0, 0);
 // 	printf("\nlen2: %d\n", len2);
-
 // 	return (0);
 // }
