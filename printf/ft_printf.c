@@ -77,15 +77,3 @@ int	ft_printf(char const *str, ...)
 	}
 	return (len);
 }
-
-// int	main(void)
-// {
-// 	int len1;
-// 	int len2;
-
-// 	len1 = ft_printf(" %p %p ", 0, 0);
-// 	printf("\nlen1: %d\n", len1);
-// 	len2 = printf(" %p %p ", 0, 0);
-// 	printf("\nlen2: %d\n", len2);
-// 	return (0);
-// }
