@@ -6,12 +6,11 @@
 /*   By: antlopez <antlopez@student.42malaga.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/11 18:01:46 by antlopez          #+#    #+#             */
-/*   Updated: 2022/12/11 18:01:48 by antlopez         ###   ########.fr       */
+/*   Updated: 2023/01/16 19:03:27 by antlopez         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-// #include "ft_printf_utils.c"
 
 int	ft_putchar(char c)
 {
@@ -63,6 +62,8 @@ int	ft_printf(char const *str, ...)
 	va_start(arg, str);
 	len = 0;
 	i = 0;
+	if (write(1, "", 0) == -1)
+		return (-1);
 	while (str[i])
 	{
 		if (str[i] == '%')
