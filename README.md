@@ -1,5 +1,20 @@
 # 42Cursus_printf
-Second project of 42 Cursus which consists in replicating the printf function.
+
+Second project of 42 Cursus which consists in replicating the **`printf()`** function of the libc.
+
+The following conversions will be implemented:
+
+| Conversion  | Description |
+| ------------- | ------------- |
+| **%c** | Prints a single character  |
+| **%s** | Prints a string (as defined by default in C)|
+| **%p** | The void pointer * given as argument is printed in hexadecimal format|
+| **%d** | Prints a decimal number (base 10)|
+| **%i** | Prints an integer in base 10|
+| **%u** | Prints an unsigned decimal number (base 10)|
+| **%x** | Prints a hexadecimal number (base 16) in lowercase|
+| **%X** | Prints a hexadecimal number (base 16) in uppercase|
+| **%%** | Prints the percent symbol|
 
 ## How to use it?
 
