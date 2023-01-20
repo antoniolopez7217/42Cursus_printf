@@ -2,6 +2,13 @@
 
 Second project of 42 Cursus which consists in replicating the **`printf()`** function of the libc.
 
+The prototype of **`ft_printf()`** will be:
+
+```C
+int ft_printf(char const *, ...);
+```
+
+
 The following conversions will be implemented:
 
 | Conversion  | Description |
@@ -16,11 +23,6 @@ The following conversions will be implemented:
 | **%X** | Prints a hexadecimal number (base 16) in uppercase|
 | **%%** | Prints the percent symbol|
 
-The prototype of **`ft_printf()`** will be:
-
-```C
-int ft_printf(char const *, ...);
-```
 
 
 ## How to use it?
