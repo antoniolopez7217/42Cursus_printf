@@ -25,7 +25,7 @@ The following conversions will be implemented:
 
 
 
-## How to use it?
+## :hammer_and_wrench: How to use it?
 
 ### 1. Compiling the function
 
@@ -62,7 +62,7 @@ Then you need to compile your main.c file with the libftprintf.a file generated 
 cc -Wall -Wextra -Werror main.c libftprintf.a
 ```
 
-## Useful links
+## :bulb: Useful links
 
 - [Information about the functions `va_arg`, `va_copy`, `va_end`, `va_start`](https://learn.microsoft.com/en-us/cpp/c-runtime-library/reference/va-arg-va-copy-va-end-va-start?view=msvc-170)
 - How to test the project? -> [Francinette](https://github.com/xicodomingues/francinette)
