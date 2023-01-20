@@ -16,6 +16,13 @@ The following conversions will be implemented:
 | **%X** | Prints a hexadecimal number (base 16) in uppercase|
 | **%%** | Prints the percent symbol|
 
+The prototype of **`ft_printf()`** will be:
+
+```C
+int ft_printf(char const *, ...);
+```
+
+
 ## How to use it?
 
 ### 1. Compiling the function
